@@ -1,0 +1,17 @@
+<launch>
+    <!-- publish /odometry/gps -->	
+    <include file="$(find gps_navigation)/launch/start_navsat.launch" /> 
+
+    <!-- publish /odometry/filtered -->
+    <include file="$(find gps_navigation)/launch/ekf_localization.launch" />
+
+    <!-- publish /scan_filtered -->
+    <include file="$(find mobile_mini)/include/my_laser_filter.launch" /> 
+
+    <!-- Run the map server -->
+    <include file="$(find gps_navigation)/launch/start_map_server.launch" />
+
+    <!--- Run Move Base -->
+    <include file="$(find my_move_base)/launch/my_move_base.launch" />
+
+</launch>
